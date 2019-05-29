@@ -1,11 +1,12 @@
 package com.example.ideawaretest.Data.Local
 
+import com.example.ideawaretest.UI.Home.Adapters.Extras.HomeItems
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.RawValue
 
 data class Results(
     @SerializedName("id")
-    var fixture_id: Int,
+    var fixture_id: Long,
     @SerializedName("type")
     var type: String,
     @SerializedName("homeTeam")
@@ -22,7 +23,11 @@ data class Results(
     var state: String,
     @SerializedName("score")
     var score: @RawValue Score
-)
+): HomeItems() {
+    override fun getType(): Int = TYPE_RESULTS
+
+    override fun getId(): Long = fixture_id
+}
 
 data class Score(
     @SerializedName("home")
