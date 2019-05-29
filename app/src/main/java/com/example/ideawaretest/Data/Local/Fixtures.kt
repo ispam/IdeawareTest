@@ -54,7 +54,11 @@ data class AwayTeam(
 
 data class CompetitionStage(
     @SerializedName("competition")
-    var competition: Competition
+    var competition: Competition,
+    @SerializedName("stage")
+    var stage: String,
+    @SerializedName("leg")
+    var leg: String
 )
 
 data class Competition(

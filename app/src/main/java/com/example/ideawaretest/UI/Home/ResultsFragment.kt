@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.ideawaretest.R
+import com.example.ideawaretest.UI.App
 import io.reactivex.disposables.CompositeDisposable
 
 class ResultsFragment: Fragment() {
@@ -13,6 +14,7 @@ class ResultsFragment: Fragment() {
     private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        App.component.inject(this)
         return inflater.inflate(R.layout.fragment_results, container, false)
     }
 
