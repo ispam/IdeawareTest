@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">IdeawareTest</string>
+    <string name="fixtures">Fixtures</string>
+    <string name="results">Results</string>
 </resources>
