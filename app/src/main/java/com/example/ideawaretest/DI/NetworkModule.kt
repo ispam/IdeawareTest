@@ -40,7 +40,7 @@ class NetworkModule {
         val interceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
                 message -> Log.v("LoggingInterceptor", message)
         })
-        interceptor.level = HttpLoggingInterceptor.Level.BASIC
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
     }
 

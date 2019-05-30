@@ -4,7 +4,9 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:background="@color/colorLightGray"
-                                                   android:layout_height="wrap_content">
+                                                   android:layout_height="wrap_content" android:id="@+id/margin"
+                                                   android:layout_marginStart="3dp" android:layout_marginLeft="3dp"
+                                                   android:layout_marginEnd="3dp" android:layout_marginRight="3dp">
 
     <TextView
             android:text="September"
@@ -14,14 +16,16 @@
             android:textColor="@android:color/black"
             android:id="@+id/header_month"
             android:layout_marginTop="16dp"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:fontFamily="@font/armata"/>
     <TextView
             android:text="2017"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="@android:color/black"
             android:id="@+id/header_year" app:layout_constraintStart_toEndOf="@+id/header_month"
             android:layout_marginStart="8dp"

@@ -8,8 +8,8 @@ import retrofit2.http.GET
 interface APIService {
 
     @GET("cdn-og-test-api/test-task/fixtures.json")
-    fun getFixtures(): Single<Fixtures>
+    fun getFixtures(): Single<List<Fixtures>>
 
     @GET("cdn-og-test-api/test-task/results.json")
-    fun getResults(): Single<Results>
+    fun getResults(): Single<List<Results>>
 }
