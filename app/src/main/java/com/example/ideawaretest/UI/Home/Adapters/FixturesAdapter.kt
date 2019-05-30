@@ -29,6 +29,16 @@ class FixturesAdapter(private val list: MutableList<HomeItems>): RecyclerView.Ad
 
     override fun getItemViewType(position: Int): Int = list[position].getType()
 
+    fun appendNewItems(itemsToAppend: MutableList<HomeItems>){
+        list.addAll(itemsToAppend)
+        notifyDataSetChanged()
+    }
+
+    fun clearList() {
+        list.clear()
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when (getItemViewType(position)) {

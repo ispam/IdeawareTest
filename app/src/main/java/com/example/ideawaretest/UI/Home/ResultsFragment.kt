@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +27,7 @@ import javax.inject.Inject
 class ResultsFragment: Fragment() {
 
     private val disposable = CompositeDisposable()
+    private var firstTime = true
 
     @Inject
     lateinit var apiService: APIService
@@ -65,7 +68,35 @@ class ResultsFragment: Fragment() {
                     }
                 }
 
-                results_recycler.adapter = ResultsAdapter(newList)
+                val adapter = ResultsAdapter(newList)
+                results_recycler.adapter = adapter
+
+                val spinnerGroup = it.groupBy { it.competitionState.competition.competition_name }
+
+                val spinnerList = mutableListOf<String>()
+                for (fixture in spinnerGroup.keys) {
+                    spinnerList.add(fixture)
+                }
+
+                results_spinner.adapter = ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, spinnerList)
+                results_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+                        if (!firstTime) {
+                            val competition = spinnerList[position]
+
+                            val competitionItems = it.filter { it.competitionState.competition.competition_name == competition }
+
+                            adapter.clearList()
+                            adapter.appendNewItems(competitionItems as MutableList<HomeItems>)
+                        } else {
+                            firstTime = false
+                        }
+                    }
+
+                }
             }
             .subscribe())
     }
