@@ -47,11 +47,9 @@ class FixturesAdapter(private val list: MutableList<HomeItems>): RecyclerView.Ad
     inner class HeaderViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         private val month = view.findViewById<TextView>(R.id.header_month)
-        private val year = view.findViewById<TextView>(R.id.header_year)
 
         fun bind(group: Group) {
-            month.text = group.month
-            year.text = group.year
+            month.text = group.date
         }
 
     }

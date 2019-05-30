@@ -6,7 +6,7 @@ import kotlinx.android.parcel.RawValue
 
 data class Results(
     @SerializedName("id")
-    var fixture_id: Long,
+    var result_id: Long,
     @SerializedName("type")
     var type: String,
     @SerializedName("homeTeam")
@@ -26,7 +26,7 @@ data class Results(
 ): HomeItems() {
     override fun getType(): Int = TYPE_RESULTS
 
-    override fun getId(): Long = fixture_id
+    override fun getId(): Long = result_id
 }
 
 data class Score(

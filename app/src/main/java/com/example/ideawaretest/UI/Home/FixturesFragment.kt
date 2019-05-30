@@ -48,14 +48,17 @@ class FixturesFragment: Fragment() {
                 val groups = it.groupBy { item ->
                     val format = SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'", Locale.getDefault())
                     val newDate: Date = format.parse(item.date)
-                    val monthFormat = SimpleDateFormat("MMMM")
+                    val monthFormat = SimpleDateFormat("MMMM, yyy")
                     monthFormat.format(newDate.time)
                 }
 
                 val newList = mutableListOf<HomeItems>()
                 for (entry in groups.entries) {
                     val random = Random().nextInt(10000)
-                    val group = Group(random.toLong(), entry.key, "2019")
+//                    val format = SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'", Locale.getDefault())
+//                    val newDate: Date = format.parse(entry.value["date"].date)
+//                    val monthFormat = SimpleDateFormat("yyyy")
+                    val group = Group(random.toLong(), entry.key)
 
                     newList.add(group)
                     for (fixture in entry.value) {
